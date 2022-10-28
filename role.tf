@@ -11,10 +11,10 @@ resource "snowflake_warehouse_grant" "loader" {
 }
 
 resource "snowflake_database_grant" "loader" {
-  database_name     = var.snowflake_database
-  privilege         = "USAGE"
-  roles             = [snowflake_role.loader.name]
-  with_grant_option = false
+  database_name                   = var.snowflake_database
+  privilege                       = "USAGE"
+  roles                           = [snowflake_role.loader.name]
+  with_grant_option               = false
   enable_multiple_database_grants = var.shared_database
 }
 
@@ -60,11 +60,11 @@ resource "snowflake_schema_grant" "loader" {
     "MODIFY",
     "USAGE"
   ])
-  database_name     = var.snowflake_database
-  schema_name       = var.snowflake_schema
-  privilege         = each.key
-  roles             = [snowflake_role.loader.name]
-  with_grant_option = false
+  database_name                 = var.snowflake_database
+  schema_name                   = var.snowflake_schema
+  privilege                     = each.key
+  roles                         = [snowflake_role.loader.name]
+  with_grant_option             = false
   enable_multiple_schema_grants = var.shared_database
 }
 
@@ -74,12 +74,12 @@ resource "snowflake_table_grant" "loader" {
     "OWNERSHIP",
     "SELECT"
   ])
-  database_name     = var.snowflake_database
-  schema_name       = var.snowflake_schema
-  table_name        = var.snowflake_event_table
-  privilege         = each.key
-  roles             = [snowflake_role.loader.name]
-  with_grant_option = false
+  database_name                = var.snowflake_database
+  schema_name                  = var.snowflake_schema
+  table_name                   = var.snowflake_event_table
+  privilege                    = each.key
+  roles                        = [snowflake_role.loader.name]
+  with_grant_option            = false
   enable_multiple_table_grants = var.shared_database
 }
 
