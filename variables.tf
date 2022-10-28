@@ -18,12 +18,6 @@ variable "snowflake_database" {
   type        = string
 }
 
-variable "shared_database" {
-  description = "When this is set to true, database grants applied to roles and objects outside Terraform will not be revoked."
-  type        = bool
-  default     = false
-}
-
 variable "snowflake_schema" {
   description = "Snowflake schema name"
   type        = string
@@ -117,4 +111,22 @@ variable "override_iam_loader_role_name" {
   description = "Override integration iam role name, if not set it will be var.name with -snowflakedb-load-role suffix"
   default     = ""
   type        = string
+}
+
+variable "enable_multiple_database_grants" {
+  description = "When this is set to true, database grants applied to roles and objects outside Terraform will not be revoked."
+  type        = bool
+  default     = false
+}
+
+variable "enable_multiple_schema_grants" {
+  description = "When this is set to true, schema grants applied to roles and objects outside Terraform will not be revoked."
+  type        = bool
+  default     = false
+}
+
+variable "enable_multiple_table_grants" {
+  description = "When this is set to true, table grants applied to roles and objects outside Terraform will not be revoked."
+  type        = bool
+  default     = false
 }

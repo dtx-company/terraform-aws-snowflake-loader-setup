@@ -15,7 +15,7 @@ resource "snowflake_database_grant" "loader" {
   privilege         = "USAGE"
   roles             = [snowflake_role.loader.name]
   with_grant_option = false
-  enable_multiple_grants = var.shared_database
+  enable_multiple_database_grants = var.shared_database
 }
 
 resource "snowflake_file_format_grant" "loader" {
@@ -65,6 +65,7 @@ resource "snowflake_schema_grant" "loader" {
   privilege         = each.key
   roles             = [snowflake_role.loader.name]
   with_grant_option = false
+  enable_multiple_schema_grants = var.shared_database
 }
 
 resource "snowflake_table_grant" "loader" {
@@ -79,6 +80,7 @@ resource "snowflake_table_grant" "loader" {
   privilege         = each.key
   roles             = [snowflake_role.loader.name]
   with_grant_option = false
+  enable_multiple_table_grants = var.shared_database
 }
 
 resource "snowflake_role_grants" "loader" {
