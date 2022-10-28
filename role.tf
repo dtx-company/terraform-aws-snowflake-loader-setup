@@ -15,6 +15,7 @@ resource "snowflake_database_grant" "loader" {
   privilege         = "USAGE"
   roles             = [snowflake_role.loader.name]
   with_grant_option = false
+  enable_multiple_grants = var.shared_database
 }
 
 resource "snowflake_file_format_grant" "loader" {

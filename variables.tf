@@ -18,6 +18,12 @@ variable "snowflake_database" {
   type        = string
 }
 
+variable "shared_database" {
+  description = "When this is set to true, database grants applied to roles and objects outside Terraform will not be revoked."
+  type        = bool
+  default     = false
+}
+
 variable "snowflake_schema" {
   description = "Snowflake schema name"
   type        = string
